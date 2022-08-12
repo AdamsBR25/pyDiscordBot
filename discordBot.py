@@ -1,42 +1,29 @@
 import discord
+from discord.ext import commands
+
 import os
 from dotenv import load_dotenv
+import logging
 
-# commands folder to be used at a later date with a command handler
-# import commands as commands
+# log file things
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 load_dotenv()
 
 token = os.getenv('TOKEN')
-client = discord.Client()
 
+bot = commands.Bot(command_prefix=',')
 
-@client.event
+@bot.event
 async def on_ready():
-    print("Bot logged in!")
+    print(f"Bot is logged in as {bot.user}")
 
-@client.event
-async def on_message(message):
-    username = str(message.author).split('#')[0]
-    user_message = str(message.content).lower()
-    channel = message.channel
-    print(f"{username}: {user_message} ({str(channel.name)})")
+@bot.command()
+async def test(ctx):
+    await ctx.send("Hello there")
 
-    if message.author == client.user:
-        return
-
-    if user_message[0] != '.':
-        return
-    elif user_message[0] == '.':
-        user_message = user_message.split('.')
-        msg = user_message[1].split(' ')
-        cmd = msg[0]
-        args = msg[1:]
-
-        if cmd == "hello":
-            client.send_message(channel, "Hello there!")
-
-        
-
-
-client.run(token)
+bot.run(token)
