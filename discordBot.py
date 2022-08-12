@@ -1,4 +1,5 @@
 # just the import for the discord.py thing using the discord.ext.commands.Bot instead of discord.Client previously used
+import discord
 from discord.ext import commands
 
 # stuff for .env
@@ -26,6 +27,9 @@ bot = commands.Bot(command_prefix=',')
 @bot.event
 async def on_ready():
     print(f"Bot is logged in as {bot.user}")
+
+    game = discord.Game("bot under development")
+    await bot.change_presence(activity=game)
 
 # loads commands from a discord extension + cog (commandExtension.py)
 bot.load_extension("commandExtension")
