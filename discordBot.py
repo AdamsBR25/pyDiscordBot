@@ -32,15 +32,19 @@ async def on_ready():
     await bot.change_presence(activity=game)
 
 # loads commands from a discord extension
-bot.load_extension("commandList.clear")
-bot.load_extension("commandList.play")
+bot.load_extension("commandList.purge")
+# bot.load_extension("commandList.play")
+bot.load_extension("commandList.Music")
 
 # command that reloads the extensions without restarting the bot
 @bot.command()
 @commands.is_owner()
 async def reload(ctx):
-    bot.reload_extension("commandList.clear")
-    bot.reload_extension("commandList.play")
+    bot.reload_extension("commandList.purge")
+    # bot.reload_extension("commandList.play")
+    bot.reload_extension("commandList.Music")
+
+    await ctx.send("Reloaded all extensions")
 
 # error handling for commands that don't exist
 @bot.event
