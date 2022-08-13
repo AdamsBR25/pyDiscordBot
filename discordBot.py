@@ -37,7 +37,7 @@ bot.load_extension("commandList.Music")
 bot.load_extension("commandList.say")
 
 # command that reloads the extensions without restarting the bot
-@bot.command()
+@bot.command(hidden=True)
 @commands.is_owner()
 async def reload(ctx):
     """Reloads all the commands
