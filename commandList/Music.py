@@ -1,4 +1,5 @@
 # all of this code is from stackoverflow L
+# none of this code in Music.py is actually mine
 
 import discord
 from discord.ext import commands
