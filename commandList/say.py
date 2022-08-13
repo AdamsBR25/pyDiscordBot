@@ -7,6 +7,8 @@ class Say(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def say(self, ctx, channel, *, args):
+        """Say a channel to send a specified message to"""
+
         id = channel.replace('<', "")
         id = id.replace('>', "")
         id = id.replace('#', "")

@@ -33,7 +33,6 @@ async def on_ready():
 
 # loads commands from a discord extension
 bot.load_extension("commandList.delete")
-# bot.load_extension("commandList.play")
 bot.load_extension("commandList.Music")
 bot.load_extension("commandList.say")
 
@@ -41,8 +40,11 @@ bot.load_extension("commandList.say")
 @bot.command()
 @commands.is_owner()
 async def reload(ctx):
+    """Reloads all the commands
+    
+        Only bot owner (unclebeedy) can use
+    """
     bot.reload_extension("commandList.delete")
-    # bot.reload_extension("commandList.play")
     bot.reload_extension("commandList.Music")
     bot.reload_extension("commandList.say")
 
@@ -52,6 +54,6 @@ async def reload(ctx):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("Command not found")
+        await ctx.send("Command not found, use .help to see a list of commands")
 
 bot.run(token)

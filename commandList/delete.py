@@ -5,6 +5,7 @@ from discord.ext import commands
 @commands.command()
 @commands.is_owner()
 async def delete(ctx, arg: int):
+    """Delete a specified number of messages from the channel"""
     try:
         arg = int(arg) + 1
         await ctx.channel.purge(limit=arg)
