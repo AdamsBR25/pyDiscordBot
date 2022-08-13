@@ -21,7 +21,7 @@ load_dotenv()
 token = os.getenv('TOKEN')
 
 # command prefix
-bot = commands.Bot(command_prefix=',')
+bot = commands.Bot(command_prefix='.')
 
 # prints a message to the terminal when the bot connects
 @bot.event
