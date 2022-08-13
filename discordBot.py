@@ -28,7 +28,7 @@ bot = commands.Bot(command_prefix='.')
 async def on_ready():
     print(f"Bot is logged in as {bot.user}")
 
-    game = discord.Game("currently being completely rewritten")
+    game = discord.Game("new changes coming very soon")
     await bot.change_presence(activity=game)
 
 # loads commands from a discord extension
