@@ -35,6 +35,7 @@ async def on_ready():
 bot.load_extension("commandList.delete")
 # bot.load_extension("commandList.play")
 bot.load_extension("commandList.Music")
+bot.load_extension("commandList.say")
 
 # command that reloads the extensions without restarting the bot
 @bot.command()
@@ -43,6 +44,7 @@ async def reload(ctx):
     bot.reload_extension("commandList.delete")
     # bot.reload_extension("commandList.play")
     bot.reload_extension("commandList.Music")
+    bot.reload_extension("commandList.say")
 
     await ctx.send("Reloaded all extensions")
 

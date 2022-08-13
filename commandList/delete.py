@@ -13,7 +13,7 @@ async def delete(ctx, arg: int):
 
 # error handling for the clear command
 @delete.error
-async def purge_error(ctx, error):
+async def delete_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("ayo you can't do that")
     elif isinstance(error, commands.BadArgument):
