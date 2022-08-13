@@ -33,7 +33,16 @@ async def on_ready():
 
 # loads commands from a discord extension
 bot.load_extension("commandList.clear")
+bot.load_extension("commandList.play")
 
+# command that reloads the extensions without restarting the bot
+@bot.command()
+@commands.is_owner()
+async def reload(ctx):
+    bot.reload_extension("commandList.clear")
+    bot.reload_extension("commandList.play")
+
+# error handling for commands that don't exist
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
