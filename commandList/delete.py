@@ -4,7 +4,7 @@ from discord.ext import commands
 # clear command definition
 @commands.command()
 @commands.is_owner()
-async def purge(ctx, arg: int):
+async def delete(ctx, arg: int):
     try:
         arg = int(arg) + 1
         await ctx.channel.purge(limit=arg)
@@ -12,7 +12,7 @@ async def purge(ctx, arg: int):
         await ctx.send("Input a valid number")
 
 # error handling for the clear command
-@purge.error
+@delete.error
 async def purge_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("ayo you can't do that")
@@ -24,4 +24,4 @@ async def purge_error(ctx, error):
 
 # the entry point for the extension which loads the cog so that the commands can be used
 def setup(bot):
-    bot.add_command(purge)
+    bot.add_command(delete)

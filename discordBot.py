@@ -32,7 +32,7 @@ async def on_ready():
     await bot.change_presence(activity=game)
 
 # loads commands from a discord extension
-bot.load_extension("commandList.purge")
+bot.load_extension("commandList.delete")
 # bot.load_extension("commandList.play")
 bot.load_extension("commandList.Music")
 
@@ -40,7 +40,7 @@ bot.load_extension("commandList.Music")
 @bot.command()
 @commands.is_owner()
 async def reload(ctx):
-    bot.reload_extension("commandList.purge")
+    bot.reload_extension("commandList.delete")
     # bot.reload_extension("commandList.play")
     bot.reload_extension("commandList.Music")
 
