@@ -31,7 +31,12 @@ async def on_ready():
     game = discord.Game("bot under development")
     await bot.change_presence(activity=game)
 
-# loads commands from a discord extension + cog (commandExtension.py)
-bot.load_extension("commandExtension")
+# loads commands from a discord extension
+bot.load_extension("commandList.clear")
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("Command not found")
 
 bot.run(token)
